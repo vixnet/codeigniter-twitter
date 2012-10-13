@@ -113,39 +113,22 @@
 		    return $response;
 		}
 		
-		public function post($url, $params, $multipart = false)
+	public function post($url, $params)
 		{
 			// Todo
-			/*$post = '';
-			
+			$post = '';
+
 			foreach ( $params['request'] as $k => $v )
 			{
 				$post .= "{$k}={$v}&";
 			}
-			
-			$post = substr($post, 0, -1);*/
-			
-			if(!$multipart){
- 	 			/*foreach ( $params['request'] as $k => $v )
- 				{
- 	 				$post .= "{$k}={$v}&";
-				}
- 				$post = substr($post, 0, -1);*/
-				$post = http_build_query($params);
- 	 		} else {
- 	 			$post = $params['request'];
-			}
-			
+
+			$post = substr($post, 0, -1);
+
 			$this->_initConnection($url, $params);
 			curl_setopt($this->_ch, CURLOPT_POST, 1);
 			curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $post);
-			
-			// Debugging
- 	 		//$f = fopen('/Users/Lee/Desktop/request.txt', 'w');
- 	 		curl_setopt($this->_ch, CURLOPT_VERBOSE, true);
- 	 		//curl_setopt($this->_ch, CURLOPT_STDERR, $f);
- 	 		curl_setopt($this->_ch, CURLOPT_SSL_VERIFYPEER, true);
-			
+
 			$response = $this->_addCurl($url, $params);
 
 		    return $response;
@@ -304,7 +287,7 @@
 		private $_signatureMethod 		= 'HMAC-SHA1';
 		private $_version 				= '1.0';
 		private $_apiVersion 			= '1.1';
-		private $_apiUrl 				= 'http://api.twitter.com';
+		private $_apiUrl 				= 'http://api.twitter.com/1';
 		private $_searchUrl				= 'http://search.twitter.com';
 		private $_uploadUrl     		= 'https://upload.twitter.com/1/';
 		private $_callback 				= NULL;
