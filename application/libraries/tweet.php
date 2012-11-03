@@ -104,7 +104,7 @@
 				}
 				
 				$url = substr($url, 0, -1);*/
-				$url = http_build_query($params);
+				$url .= '?'.http_build_query($params['request']);
 			}
 
 			$this->_initConnection($url);
