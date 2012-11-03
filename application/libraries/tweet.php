@@ -104,7 +104,7 @@
 				}
 				
 				$url = substr($url, 0, -1);*/
-				$url = http_build_query($params);
+				$url .= '?'.http_build_query($params['request']);
 			}
 
 			$this->_initConnection($url);
@@ -286,7 +286,7 @@
 		private $_accessTokenUrl 		= 'http://api.twitter.com/oauth/access_token';
 		private $_signatureMethod 		= 'HMAC-SHA1';
 		private $_version 				= '1.0';
-		private $_apiUrl 				= 'http://api.twitter.com/1';
+		private $_apiUrl 				= 'http://api.twitter.com/1.1';
 		private $_searchUrl			= 'http://search.twitter.com/';
 		private $_uploadUrl     		= 'https://upload.twitter.com/1/';
 		private $_callback 			= NULL;
